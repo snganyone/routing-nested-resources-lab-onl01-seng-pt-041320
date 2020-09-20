@@ -3,7 +3,7 @@ class SongsController < ApplicationController
   def index
     @artist = Artist.find_by(id: params[:artist_id])
     if @artist
-      @songs = @artist.songs#.find_by(id: params[:artist_id]).songs
+      @songs = @artist.songs
     elsif !params[:artist_id]
       @songs = Song.all
     elsif @artist.nil?
@@ -13,8 +13,6 @@ class SongsController < ApplicationController
   end
 
   def show
-    #@artist = Artist.find_by(id: params[:artist_id])
-    #binding.pry
     if params[:artist_id]
       @artist = Artist.find_by(id: params[:artist_id])
       if @artist
